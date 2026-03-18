@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Para ti ❤️</title>
+  <style>
+    body {
+      background: linear-gradient(to right, pink, lightblue);
+      text-align: center;
+      font-family: Arial;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 50px;
+      color: red;
+    }
+    p {
+      font-size: 22px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      background-color: red;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Te amo ❤️</h1>
+
+<p id="mensaje">Haz clic abajo 👇</p>
+
+<button onclick="mostrarMensaje()">Presiona aquí</button>
+
+<script>
+function mostrarMensaje() {
+  document.getElementById("mensaje").innerHTML =
+  "Eres alguien muy única en este universo... y te amo más de lo que puedo explicar 💖";
+}
+</script>
+
+</body>
+</html>
