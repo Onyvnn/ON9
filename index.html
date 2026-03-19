@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Para ti ❤️</title>
+
   <style>
     body {
       margin: 0;
@@ -12,21 +14,23 @@
     }
 
     h1 {
-      margin-top: 80px;
+      margin-top: 60px;
       font-size: 50px;
       color: pink;
     }
 
     #mensaje {
-      width: 70%;
+      width: 80%;
       margin: auto;
       font-size: 20px;
       margin-top: 20px;
       white-space: pre-line;
+      max-height: 60vh;
+      overflow-y: auto;
     }
 
     button {
-      margin-top: 20px;
+      margin-top: 15px;
       padding: 12px 20px;
       font-size: 16px;
       background: pink;
@@ -48,21 +52,22 @@
     }
   </style>
 </head>
+
 <body>
 
 <h1>Para ti ❤️</h1>
 
-<button onclick="mostrarMensaje()">Haz clic aquí 💖</button>
+<p>💖 Pon play a la música antes de leer</p>
+
+<audio controls loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946b6c1c8d.mp3" type="audio/mpeg">
+</audio>
+
 <br>
-<button onclick="toggleMusica()">💖 Toca aquí antes de leer</button>
+
+<button onclick="mostrarMensaje()">Haz clic aquí 💖</button>
 
 <p id="mensaje"></p>
-
-<div style="margin-top:20px;">
-  <audio controls loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/10/25/audio_946b6c1c8d.mp3" type="audio/mpeg">
-  </audio>
-</div>
 
 <script>
 const texto = `Sabes… desde el primer día que nos conocimos más a fondo, sentí una conexión única.
@@ -94,38 +99,11 @@ Te amo, corazón.
 Nunca supe cómo expresarme bien… pero contigo todo se siente diferente.
 Eres alguien muy única para mí, y no cambiaría lo que tenemos por nada 💖`;
 
-let i = 0;
-
 function mostrarMensaje() {
-  const contenedor = document.getElementById("mensaje");
-  contenedor.innerHTML = "";
-  i = 0;
-
-  function escribir() {
-    if (i < texto.length) {
-      contenedor.innerHTML += texto.charAt(i);
-      i++;
-      setTimeout(escribir, 25);
-    }
-  }
-
-  escribir();
+  document.getElementById("mensaje").innerText = texto;
 }
 
-// música
-let reproduciendo = false;
-function toggleMusica() {
-  const audio = document.getElementById("musica");
-  if (!reproduciendo) {
-    audio.play();
-    reproduciendo = true;
-  } else {
-    audio.pause();
-    reproduciendo = false;
-  }
-}
-
-// corazones
+// corazones cayendo
 setInterval(() => {
   let corazon = document.createElement("div");
   corazon.innerHTML = "❤️";
@@ -138,11 +116,6 @@ setInterval(() => {
   }, 5000);
 }, 300);
 </script>
-<script>
-function toggleMusica() {
-  var audio = document.getElementById("musica");
-  audio.play();
-}
-</script>
+
 </body>
 </html>
