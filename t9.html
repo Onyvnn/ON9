@@ -5,31 +5,31 @@
   <style>
     body {
       margin: 0;
-      padding: 0;
       background: black;
       color: white;
-      text-align: center;
       font-family: Arial;
+      text-align: center;
       overflow: hidden;
     }
 
     h1 {
-      margin-top: 100px;
+      margin-top: 80px;
       font-size: 50px;
       color: pink;
     }
 
     #mensaje {
-      font-size: 22px;
+      width: 70%;
+      margin: auto;
+      font-size: 20px;
       margin-top: 20px;
-      opacity: 0;
-      transition: 1s;
+      white-space: pre-line;
     }
 
     button {
-      margin-top: 30px;
-      padding: 15px 25px;
-      font-size: 18px;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
       background: pink;
       border: none;
       border-radius: 10px;
@@ -53,28 +53,78 @@
 
 <h1>Para ti ❤️</h1>
 
-<button onclick="mostrar()">Haz clic aquí</button>
+<button onclick="mostrarMensaje()">Haz clic aquí 💖</button>
+<br>
+<button onclick="toggleMusica()">🎵 Música</button>
 
-<p id="mensaje">
-Sabes desde el primer dia que nos conocimos mas a detalles, pude sentir una conexion unica, pude ver a traves 
-de tus hermososo ojos tu corazoncito, y desde ese dia no paro de pensar en ti, cuando te pedi que fueras mi pololita bn guapa,
-todo cambio y no fue a mal si no a mejor, ya que puedo ver muchas cositas del futuro todo un pro yo yiaaaa, todo lo que hemos pasado
-hasta ahora para mi es unico e inigualable, con esto quiero dejar en claro que mis intenciones son mucho mas alla de años deaaaa,
-Se que dios pone tiempo para todo, pero yo todo chiquito y autista, deseo y pido que dios alargue esto hasta el fin del mundo yiaa, nana
-Espero que nos podamos amar muchisisisimo, desde mi corazon quiero amarte hasta morir y sabes pq?, porque el te estaria amando con mi alma y eso nunca acabara
-Quiero que sepas que cualquier cosita que pase por su cabecita o cualquier otra razon que haga que este malita, cuenta conmigo mi amor
-para lo que sea estare siempre para ute y su corazon, tu corazon ya lo tengo y es mioo muejejejeje, lo ultimo,
-Agarremonos de las mano y caminemos hasta convertirnos en nube y asi poder estar tranquilos y juntitos jijij
-Te amo corazon nunca supe como expresarme de manera correcta, pero contigo todo se siente diferente.  
-Eres alguien muy única para mí, y no cambiaría lo que tenemos por nada 💖
-</p>
+<p id="mensaje"></p>
+
+<audio id="musica" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-function mostrar() {
-  document.getElementById("mensaje").style.opacity = 1;
+const texto = `Sabes… desde el primer día que nos conocimos más a fondo, sentí una conexión única.
+En tus hermosos ojos pude ver tu corazoncito, y desde ese momento no he dejado de pensar en ti.
+
+Cuando te pedí que fueras mi pololita, todo cambió… pero para mejor 💖
+Porque ahora puedo imaginar muchas cositas del futuro contigo (todo un pro yo yiaaa 😏).
+
+Todo lo que hemos vivido hasta ahora es único e inigualable para mí.
+Y con esto quiero dejar claro que mis intenciones van mucho más allá del tiempo…
+
+Sé que Dios pone tiempos para todo, pero yo, todo chiquitito 🥺, le pido que esto dure hasta el fin del mundo y más allá.
+
+Quiero que nos amemos muchísimo, y desde mi corazón quiero amarte hasta morir…
+¿y sabes por qué?
+Porque incluso después, mi alma seguiría amándote, y eso nunca se acabaría 💫
+
+Quiero que sepas que cualquier cosita que pase por tu cabecita, cualquier cosa que te haga sentir mal…
+puedes contar conmigo siempre, mi amor.
+Estoy aquí para ti y para tu corazoncito, siempre ❤️
+
+(Igual tu corazón ya es mío muejeje 😏)
+
+Y lo último…
+agarremos nuestras manos y caminemos juntos hasta convertirnos en nube,
+para estar tranquilos, juntitos, y felices jijiji ☁️💖
+
+Te amo, corazón.
+Nunca supe cómo expresarme bien… pero contigo todo se siente diferente.
+Eres alguien muy única para mí, y no cambiaría lo que tenemos por nada 💖`;
+
+let i = 0;
+
+function mostrarMensaje() {
+  const contenedor = document.getElementById("mensaje");
+  contenedor.innerHTML = "";
+  i = 0;
+
+  function escribir() {
+    if (i < texto.length) {
+      contenedor.innerHTML += texto.charAt(i);
+      i++;
+      setTimeout(escribir, 25);
+    }
+  }
+
+  escribir();
 }
 
-// corazones cayendo
+// música
+let reproduciendo = false;
+function toggleMusica() {
+  const audio = document.getElementById("musica");
+  if (!reproduciendo) {
+    audio.play();
+    reproduciendo = true;
+  } else {
+    audio.pause();
+    reproduciendo = false;
+  }
+}
+
+// corazones
 setInterval(() => {
   let corazon = document.createElement("div");
   corazon.innerHTML = "❤️";
