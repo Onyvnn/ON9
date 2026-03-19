@@ -4,42 +4,79 @@
   <title>Para ti ❤️</title>
   <style>
     body {
-      background: linear-gradient(to right, pink, lightblue);
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
       text-align: center;
       font-family: Arial;
-      padding-top: 100px;
+      overflow: hidden;
     }
+
     h1 {
+      margin-top: 100px;
       font-size: 50px;
-      color: red;
+      color: pink;
     }
-    p {
+
+    #mensaje {
       font-size: 22px;
+      margin-top: 20px;
+      opacity: 0;
+      transition: 1s;
     }
+
     button {
-      padding: 10px 20px;
+      margin-top: 30px;
+      padding: 15px 25px;
       font-size: 18px;
-      background-color: red;
-      color: white;
+      background: pink;
       border: none;
       border-radius: 10px;
       cursor: pointer;
+    }
+
+    .corazon {
+      position: absolute;
+      color: red;
+      font-size: 20px;
+      animation: caer 5s linear infinite;
+    }
+
+    @keyframes caer {
+      0% { transform: translateY(-10vh); }
+      100% { transform: translateY(100vh); }
     }
   </style>
 </head>
 <body>
 
-<h1>Te amo ❤️</h1>
+<h1>Para ti ❤️</h1>
 
-<p id="mensaje">Haz clic abajo 👇</p>
+<button onclick="mostrar()">Haz clic aquí</button>
 
-<button onclick="mostrarMensaje()">Presiona aquí</button>
+<p id="mensaje">
+Te amo… no sé cómo explicarlo bien, pero contigo todo se siente diferente.  
+Eres alguien muy única para mí, y no cambiaría lo que tenemos por nada 💖
+</p>
 
 <script>
-function mostrarMensaje() {
-  document.getElementById("mensaje").innerHTML =
-  "Eres alguien muy única en este universo... y te amo más de lo que puedo explicar 💖";
+function mostrar() {
+  document.getElementById("mensaje").style.opacity = 1;
 }
+
+// corazones cayendo
+setInterval(() => {
+  let corazon = document.createElement("div");
+  corazon.innerHTML = "❤️";
+  corazon.classList.add("corazon");
+  corazon.style.left = Math.random() * 100 + "vw";
+  document.body.appendChild(corazon);
+
+  setTimeout(() => {
+    corazon.remove();
+  }, 5000);
+}, 300);
 </script>
 
 </body>
